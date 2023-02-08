@@ -16,9 +16,9 @@ namespace NorthwindDalUnitTests
         [Test]
         public  void CustomerCountTest()
         {
-            List<Customer> customers =  context.Customers.ToList();
+            DbSet<Customer> customers = context.Customers; //.ToList(); // alle Kunden aus der Customers-Tabelle
 
-            Console.WriteLine($"Name des ersten Customers: {customers.First().CompanyName}");
+           // Console.WriteLine($"Name des ersten Customers: {customers.First().CompanyName}");
 
             Assert.AreEqual(93, customers.Count());
         }
