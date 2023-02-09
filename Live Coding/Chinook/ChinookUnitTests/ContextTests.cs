@@ -27,15 +27,37 @@ namespace ChinookUnitTests
         [Test]
         public void GetRockArtists()
         {
-            var artistNames = context.Tracks.Where(tr => tr.Genre.Name == "Rock")
+            var artistNames = context.Tracks.Where(tr => tr.GenreId == context.Genres.Where(ge => ge.Name== "Rock").FirstOrDefault().GenreId)
                                         .Select(tr => tr.Album.Artist.Name) // Tipp: Navigationseigenschaften!
-                                        .Distinct(); 
-                                                                             //.ToList();
+                                        .Distinct();
+            //.ToList();
 
             foreach (string item in artistNames)
             {
                 Console.WriteLine(item);
             }
+        }
+
+        [Test]
+        public void GetRockArtistsLambdas()
+        {
+            var artistNames = context.Tracks.Where(tr => CheckGenreName(tr, "Rock"))
+                                        .Select(tr => tr.Album.Artist.Name) // Tipp: Navigationseigenschaften!
+                                        .Distinct();
+            //.ToList();
+
+            foreach (string item in artistNames)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        private bool CheckGenreName(Track track, string name)
+        {
+            if (track.Genre.Name == name)
+            { return true; }
+            else
+            { return false; }
         }
     }
 }

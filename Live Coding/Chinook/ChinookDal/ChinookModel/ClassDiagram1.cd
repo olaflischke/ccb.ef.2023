@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ChinookDal.ChinookModel.Album">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAEAAAAAAEAAAgIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ChinookModel\Album.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChinookDal.ChinookModel.Artist">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAQAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>ChinookModel\Artist.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChinookDal.ChinookModel.Genre">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ChinookModel\Genre.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChinookDal.ChinookModel.Track">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YAAAAAAAAACAIAAAAAIAAAQAgAAEAAAAAAAICEAAAAA=</HashCode>
+      <FileName>ChinookModel\Track.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
