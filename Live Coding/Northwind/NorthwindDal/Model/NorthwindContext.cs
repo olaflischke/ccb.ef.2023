@@ -26,15 +26,26 @@ namespace NorthwindDal.Model
 
         public virtual DbSet<Product> Products { get; set; }
 
+        public Action<string> Log { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
             //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-            => optionsBuilder.UseSqlite("datasource=C:\\ProgramData\\SQLite\\data\\northwind.db");
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlite("datasource=C:\\ProgramData\\SQLite\\data\\northwind.db");
+                optionsBuilder.LogTo(log => this.Log?.Invoke(log), Microsoft.Extensions.Logging.LogLevel.Information);
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            // FluentAPI
             modelBuilder.Entity<Customer>(entity =>
             {
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
+                entity.HasKey(e => e.CustomerId);
             });
 
             modelBuilder.Entity<Order>(entity =>

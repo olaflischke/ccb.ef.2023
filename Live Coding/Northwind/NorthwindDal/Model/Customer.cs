@@ -1,9 +1,10 @@
 ﻿using System;
  using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NorthwindDal.Model
 {
-
     public partial class Customer
     {
         public string CustomerId { get; set; } = null!;
