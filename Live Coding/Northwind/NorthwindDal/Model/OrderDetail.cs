@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NorthwindDal.Model;
-
-public partial class OrderDetail
+namespace NorthwindDal.Model
 {
-    public long OrderId { get; set; }
 
-    public long ProductId { get; set; }
+    public partial class OrderDetail
+    {
+        public long OrderId { get; set; }
 
-    public byte[] UnitPrice { get; set; } = null!;
+        public long ProductId { get; set; }
 
-    public long Quantity { get; set; }
+        public byte[] UnitPrice { get; set; } = null!;
 
-    public double Discount { get; set; }
+        public long Quantity { get; set; }
 
-    public virtual Order Order { get; set; } = null!;
+        public double Discount { get; set; }
 
-    public virtual Product Product { get; set; } = null!;
+        public virtual Order Order { get; set; } = null!;
+
+        public virtual Product Product { get; set; } = null!;
+    }
 }

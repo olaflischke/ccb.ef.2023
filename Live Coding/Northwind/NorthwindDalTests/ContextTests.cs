@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using NorthwindDal.Model;
+using NUnit.Framework;
+using System.Linq;
 
 namespace NorthwindDalUnitTests
 {
