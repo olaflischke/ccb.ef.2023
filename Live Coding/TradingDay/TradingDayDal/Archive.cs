@@ -11,12 +11,12 @@ namespace TradingDayDal
     {
         public Archive(string url)
         {
-            this.TradingDays=XDocument.Load(url).Root?.Descendants()
-                                    .Where(xe => xe.Name.LocalName == "Cube" && xe.Attributes().Any(at => at.Name == "time"))
-                                    .Select(xe => new TradingDay(xe))
-                                    .ToList(); 
+            //this.TradingDays=XDocument.Load(url).Root?.Descendants()
+            //                        .Where(xe => xe.Name.LocalName == "Cube" && xe.Attributes().Any(at => at.Name == "time"))
+            //                        .Select(xe => new TradingDay(xe))
+            //                        .ToList(); 
 
-            //this.TradingDays = GetData(url);
+            this.TradingDays = GetData(url);
         }
 
         private List<TradingDay>? GetData(string url)
