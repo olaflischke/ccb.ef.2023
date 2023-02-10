@@ -28,8 +28,6 @@ namespace NorthwindDalUnitTests
         {
             DbSet<Customer> customers = context.Customers; //.ToList(); // alle Kunden aus der Customers-Tabelle
 
-
-
             // Console.WriteLine($"Name des ersten Customers: {customers.First().CompanyName}");
 
             Assert.AreEqual(93, customers.Count());
@@ -44,6 +42,8 @@ namespace NorthwindDalUnitTests
             //    CompanyName = cu.CompanyName,
             //    ContactName = cu.ContactName
             //});
+
+            Assert.AreEqual(11, germans.Count());
         }
 
         [Test]

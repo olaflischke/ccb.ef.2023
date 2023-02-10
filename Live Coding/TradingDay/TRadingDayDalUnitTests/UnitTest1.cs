@@ -1,4 +1,7 @@
 using TradingDayDal;
+using NUnit.Framework;
+using System.Linq;
+using System;
 
 namespace TRadingDayDalUnitTests
 {
