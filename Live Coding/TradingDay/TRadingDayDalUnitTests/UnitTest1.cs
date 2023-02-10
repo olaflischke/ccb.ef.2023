@@ -21,9 +21,9 @@ namespace TRadingDayDalUnitTests
         {
             Archive archive=new Archive(url);
 
-            Currency? first = archive.TradingDays.FirstOrDefault()?.Currencies.FirstOrDefault();
+            //Currency? first = archive.TradingDays.FirstOrDefault()?.Currencies.FirstOrDefault();
 
-            Console.WriteLine($"{first.Symbol}: {first.EuroRate}");
+            //Console.WriteLine($"{first.Symbol}: {first.EuroRate}");
 
             Assert.AreEqual(63, archive.TradingDays.Count());
         }

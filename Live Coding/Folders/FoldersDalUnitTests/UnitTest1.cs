@@ -22,12 +22,7 @@ namespace FoldersDalUnitTests
 
         private FolderContext ConfigureContext()
         {
-            DbContextOptions options = new DbContextOptionsBuilder<FolderContext>()
-                                            .UseSqlite("datasource=C:\\ProgramData\\SQLite\\data\\folders.db")
-                                            //.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTrackingWithIdentityResolution)
-                                            .Options;
-
-            FolderContext context = new FolderContext(options);
+            FolderContext context = new FolderContext(@"datasource=C:\ProgramData\SQLite\data\folders.db");
 
             return context;
         }

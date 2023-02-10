@@ -12,7 +12,7 @@ namespace NorthwindDal.Model
 
         public long? EmployeeId { get; set; }
 
-        public byte[]? OrderDate { get; set; }
+        public DateTime? OrderDate { get; set; }
 
         public byte[]? RequiredDate { get; set; }
 

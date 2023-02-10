@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,14 +12,36 @@ namespace TradingDayDal
     {
         public Archive(string url)
         {
-            //this.TradingDays=XDocument.Load(url).Root?.Descendants()
-            //                        .Where(xe => xe.Name.LocalName == "Cube" && xe.Attributes().Any(at => at.Name == "time"))
-            //                        .Select(xe => new TradingDay(xe))
-            //                        .ToList(); 
-
             this.TradingDays = GetData(url);
+
+            SaveToDb();
         }
 
+        public void SaveToDb()
+        {
+            DbContextOptions<TradingDayContext> options = new DbContextOptionsBuilder<TradingDayContext>()
+                                            .UseSqlite("datasource=C:\\training\\cadcom\\Datenbanken\\TradingDay.db")
+                                            .Options;
+
+            using (TradingDayContext context = new TradingDayContext(options))
+            {
+                // Nicht Produktiv-Code!
+                context.Database.EnsureDeleted();
+                // Nicht Produktiv-Code!
+                context.Database.EnsureCreated();
+
+                context.TradingDays.AddRange(this.TradingDays);
+
+                context.SaveChanges();
+            }
+
+        }
+
+        /// <summary>
+        /// Liest die Daten einer GESMES-XML-Datei und gibt eine Liste von TradingDays zurück
+        /// </summary>
+        /// <param name="url">URL einer GESMES-XML-Datei</param>
+        /// <returns>Liste von TradingDays</returns>
         private List<TradingDay>? GetData(string url)
         {
 #nullable disable
@@ -26,7 +49,7 @@ namespace TradingDayDal
 
             var days = document?.Root?.Descendants()
                                     .Where(xe => xe.Name.LocalName == "Cube" && xe.Attributes().Any(at => at.Name == "time"))
-                                    .Select(xe => new TradingDay(xe) );
+                                    .Select(xe => new TradingDay(xe));
 
             List<TradingDay> tradingDays = days.ToList();
             return tradingDays;
