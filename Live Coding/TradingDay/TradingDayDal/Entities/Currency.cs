@@ -1,4 +1,4 @@
-﻿namespace TradingDayDal
+﻿namespace TradingDayDal.Entities
 {
     // Entitätsklasse
     public class Currency

@@ -14,12 +14,6 @@ namespace FoldersDal
 
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder = optionsbuilder;
-
-            base.OnConfiguring(optionsBuilder);
-        }
 
         public DbSet<Folder> Folders { get; set; }
 

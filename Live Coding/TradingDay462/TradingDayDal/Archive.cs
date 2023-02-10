@@ -21,7 +21,7 @@ namespace TradingDayDal
         public void SaveToDb()
         {
             DbContextOptions<TradingDayContext> options = new DbContextOptionsBuilder<TradingDayContext>()
-                                            .UseSqlite("datasource=C:\\training\\cadcom\\Datenbanken\\TradingDay3.db")
+                                            .UseSqlite("datasource=C:\\training\\cadcom\\Datenbanken\\TradingDayDB.db")
                                             .Options;
 
             using (TradingDayContext context = new TradingDayContext(options))
@@ -46,9 +46,8 @@ namespace TradingDayDal
         /// </summary>
         /// <param name="url">URL einer GESMES-XML-Datei</param>
         /// <returns>Liste von TradingDays</returns>
-        private List<TradingDay>? GetData(string url)
+        private List<TradingDay> GetData(string url)
         {
-#nullable disable
             XDocument document = XDocument.Load(url);
 
             var days = document?.Root?.Descendants()
@@ -57,9 +56,8 @@ namespace TradingDayDal
 
             List<TradingDay> tradingDays = days.ToList();
             return tradingDays;
-#nullable enable
         }
 
-        public List<TradingDay>? TradingDays { get; set; }
+        public List<TradingDay> TradingDays { get; set; }
     }
 }

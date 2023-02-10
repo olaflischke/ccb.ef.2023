@@ -22,7 +22,13 @@ namespace FoldersDalUnitTests
 
         private FolderContext ConfigureContext()
         {
-            FolderContext context = new FolderContext(@"datasource=C:\ProgramData\SQLite\data\folders.db");
+            DbContextOptions<FolderContext> options = new DbContextOptionsBuilder<FolderContext>()
+                                            .UseSqlite("datasource=C:\\ProgramData\\SQLite\\data\\folders.db")
+                                            .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTrackingWithIdentityResolution)
+                                            //.LogTo(...)
+                                            .Options;
+
+            FolderContext context = new FolderContext(options);
 
             return context;
         }
@@ -41,6 +47,9 @@ namespace FoldersDalUnitTests
             root.Subfolders.Add(sub3);
 
             FolderContext context = ConfigureContext();
+
+            // Ad-hoc TrackingBehavior umschalten
+            context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.TrackAll;
 
             if (context != null)
             {
